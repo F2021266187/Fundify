@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import Home from "./Pages/Home";
+import ViewallProjects from "./Pages/ViewallProjects";
 import ForgetPassword from "./Pages/PasswordReset/ForgetPassword";
 import EmailVerification from "./Pages/PasswordReset/EmailVerification";
 import PasswordReset from "./Pages/PasswordReset/PasswordReset";
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/view-projects" element={<ViewallProjects />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route path="/forget-password" element={<ForgetPassword />} />

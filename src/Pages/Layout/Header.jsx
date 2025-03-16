@@ -1,47 +1,92 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const isViewAllProjects = location.pathname === "/view-projects";
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="flex items-center">
-            <img
-              src="/Images/logo.png"
-              alt="Fundify Logo"
-              className="h-14 w-14"
-            />
-          </a>
+          {/* Logo or View All Projects */}
+          <Link to="/" className="flex items-center">
+            {isHome ? (
+              <img
+                src="/Images/logo.png"
+                alt="Fundify Logo"
+                className="h-14 w-14"
+              />
+            ) : isViewAllProjects ? (
+              <img
+                src="/Images/logo2.png"
+                alt="View All Projects Logo"
+                className="h-14 w-14"
+              />
+            ) : (
+              <span className="text-white text-lg font-semibold">
+                View All Projects
+              </span>
+            )}
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-between flex-1 max-w-4xl mx-auto px-8">
             {/* Left Navigation Group */}
             <div className="flex space-x-8">
-              <a href="/" className="text-white hover:text-gray-300">
+              <Link
+                to="/"
+                className={`${
+                  isHome ? "text-white" : "text-gray-500"
+                } hover:text-gray-300`}
+              >
                 Home
-              </a>
-              <a href="/donate" className="text-white hover:text-gray-300">
+              </Link>
+              <Link
+                to="/donate"
+                className={`${
+                  isHome ? "text-white" : "text-gray-500"
+                } hover:text-gray-300`}
+              >
                 Donate
-              </a>
-              <a href="/about" className="text-white hover:text-gray-300">
+              </Link>
+              <Link
+                to="/about"
+                className={`${
+                  isHome ? "text-white" : "text-gray-500"
+                } hover:text-gray-300`}
+              >
                 About Us
-              </a>
+              </Link>
             </div>
 
             {/* Right Navigation Group */}
             <div className="flex space-x-8">
-              <a href="/create" className="text-white hover:text-gray-300">
+              <Link
+                to="/create"
+                className={`${
+                  isHome ? "text-white" : "text-gray-500"
+                } hover:text-gray-300`}
+              >
                 Create Campaign
-              </a>
-              <a href="/login" className="text-white hover:text-gray-300">
+              </Link>
+              <Link
+                to="/login"
+                className={`${
+                  isHome ? "text-white" : "text-gray-500"
+                } hover:text-gray-300`}
+              >
                 Login/Sign Up
-              </a>
-              <a href="/contact" className="text-white hover:text-gray-300">
+              </Link>
+              <Link
+                to="/contact"
+                className={`${isHome ? "text-white" : "text-gray-500"}
+                  hover:text-gray-300`}
+              >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -89,24 +134,24 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden mt-4 bg-black/90 rounded-lg p-4">
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-white hover:text-gray-300">
+              <Link to="/" className="text-white hover:text-gray-300">
                 Home
-              </a>
-              <a href="/donate" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/donate" className="text-white hover:text-gray-300">
                 Donate
-              </a>
-              <a href="/about" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/about" className="text-white hover:text-gray-300">
                 About Us
-              </a>
-              <a href="/create" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/create" className="text-white hover:text-gray-300">
                 Create Campaign
-              </a>
-              <a href="/login" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/login" className="text-white hover:text-gray-300">
                 Login/Sign Up
-              </a>
-              <a href="/contact" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/contact" className="text-white hover:text-gray-300">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         )}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
@@ -31,12 +33,12 @@ export default function Hero() {
           >
             Start a Campaign
           </a>
-          <a
-            href="/explore"
+          <Link
+            to="/view-projects"
             className="px-8 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm w-full sm:w-auto text-center font-medium"
           >
             Explore Campaigns
-          </a>
+          </Link>
         </div>
       </div>
     </section>
